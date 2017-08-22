@@ -85,6 +85,9 @@ celerybeat-schedule
 
 # virtualenv
 venv/
+
+#Compiled files:
+__pycache__/
 *.pyc
 ENV/
 

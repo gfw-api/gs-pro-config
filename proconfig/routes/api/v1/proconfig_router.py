@@ -14,11 +14,12 @@ import CTRegisterMicroserviceFlask
 proconfig_endpoints = Blueprint('proconfig_endpoints', __name__)
 
 
-@proconfig_endpoints.route('/pro-config', strict_slashes=False, methods=['GET'])
-def get_spreadsheet():
+@proconfig_endpoints.route('/pro-config/<tech_title>', strict_slashes=False, methods=['GET'])
+def get_spreadsheet(tech_title):
     """Spreadsheet Endpoint"""
+    #Next Step add a rebuild cache 
     logging.info('[ROUTER]: print spreadsheet')
 
-    data = GoogleSheet.sheet_to_dict('Form Responses')
+    data = GoogleSheet.sheet_to_dict('Form Responses', tech_title)
 
     return jsonify({'data': data}), 200

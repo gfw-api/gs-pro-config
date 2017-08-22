@@ -3,6 +3,8 @@ import time
 import os
 import sys
 import logging
+import json
+import base64
 from oauth2client.service_account import ServiceAccountCredentials
 
 
@@ -14,8 +16,8 @@ class GoogleSheet(object):
         :return: a gspread wks object that can be used to edit/update a given sheet
         """
 
-        spreadsheet_file = os.path.join('proconfig', 'tokens', 'spreadsheet.json')
-        logging.info(spreadsheet_file)
+        # spreadsheet_file = os.path.join('proconfig', 'tokens', 'spreadsheet.json')
+        # spreadsheet_file = spreadsheet.json
 
         if custom_key:
             spreadsheet_key = custom_key
@@ -24,7 +26,11 @@ class GoogleSheet(object):
 
         # Updated for oauth2client
         # http://gspread.readthedocs.org/en/latest/oauth2.html
-        credentials = ServiceAccountCredentials.from_json_keyfile_name(spreadsheet_file,
+
+        with open('spreadsheet.json') as thefile:
+            logging.info("here's the json file {}".format(thefile.read()))
+
+        credentials = ServiceAccountCredentials.from_json_keyfile_name('spreadsheet.json',
                                                                        ['https://spreadsheets.google.com/feeds'])
 
         gc = gspread.authorize(credentials)
@@ -33,7 +39,7 @@ class GoogleSheet(object):
         return wks
 
 
-    def sheet_to_dict(sheet_name):
+    def sheet_to_dict(sheet_name, tech_title):
         """
         Convert the spreadsheet to a dict with {layername: {colName: colVal, colName2: colVal}
         :return: a dictionary representing the sheet
@@ -63,4 +69,4 @@ class GoogleSheet(object):
             for key, value in row_as_dict.items():
                 sheet_as_dict[layer_name][key] = value
 
-        return sheet_as_dict
+        return sheet_as_dict[tech_title]

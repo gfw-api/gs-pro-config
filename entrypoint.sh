@@ -4,6 +4,8 @@ set -e
 case "$1" in
     develop)
         echo "Running Development Server"
+        echo "$GS_PRO_SERVICE_ACCOUNT"
+        echo -e "$GS_PRO_SERVICE_ACCOUNT" | base64 -d > spreadsheet.json
         exec python main.py
         ;;
     test)
@@ -12,6 +14,7 @@ case "$1" in
         ;;
     start)
         echo "Running Start"
+        echo -e "$GS_PRO_SERVICE_ACCOUNT" | base64 -d > spreadsheet.json
         exec gunicorn -c gunicorn.py proconfig:app
         ;;
     *)

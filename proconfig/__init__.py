@@ -7,7 +7,7 @@ import logging
 from flask import Flask
 from proconfig.config import SETTINGS
 from proconfig.routes.api import error
-from proconfig.routes.api.v1 import proconfig_endpoints, pstwo_endpoints
+from proconfig.routes.api.v1 import proconfig_endpoints
 from proconfig.utils.files import load_config_json
 import CTRegisterMicroserviceFlask
 
@@ -22,7 +22,6 @@ app = Flask(__name__)
 
 # Routing
 app.register_blueprint(proconfig_endpoints, url_prefix='/api/v1/proconfig')
-app.register_blueprint(pstwo_endpoints, url_prefix='/api/v1/pstwo')
 
 # CT
 info = load_config_json('register')
