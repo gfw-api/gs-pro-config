@@ -1,12 +1,12 @@
 {
 	"name": "#(service.name)",
 	"endpoints": [{
-		"path": "/v1/proconfig/hello",
+		"path": "/v1/proconfig/pro-config",
 		"method": "GET",
 		"binary": true,
 		"redirect": {
 			"method": "GET",
-			"path": "/api/v1/proconfig/hello"
+			"path": "/api/v1/proconfig/pro-config"
 		}
 	}, {
 		"path": "/v1/pstwo/hello",
