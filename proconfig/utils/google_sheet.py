@@ -1,5 +1,4 @@
 import gspread
-import time
 import os
 import sys
 import logging
@@ -13,11 +12,9 @@ class GoogleSheet(object):
     def open_spreadsheet(sheet_name, custom_key=False):
         """
         Open the spreadsheet for read/update
+        :param sheet_name: name of the google sheet
         :return: a gspread wks object that can be used to edit/update a given sheet
         """
-
-        # spreadsheet_file = os.path.join('proconfig', 'tokens', 'spreadsheet.json')
-        # spreadsheet_file = spreadsheet.json
 
         if custom_key:
             spreadsheet_key = custom_key
@@ -30,7 +27,13 @@ class GoogleSheet(object):
         with open('spreadsheet.json') as thefile:
             logging.info("here's the json file {}".format(thefile.read()))
 
-        credentials = ServiceAccountCredentials.from_json_keyfile_name('spreadsheet.json',
+        if type('spreadsheet.json') is dict:
+            spreadsheet_creds = 'spreadsheet.json'
+        else:
+            spreadsheet_file = os.path.join('proconfig', 'tokens', 'spreadsheet.json')
+            spreadsheet_creds = spreadsheet_file
+
+        credentials = ServiceAccountCredentials.from_json_keyfile_name(spreadsheet_creds,
                                                                        ['https://spreadsheets.google.com/feeds'])
 
         gc = gspread.authorize(credentials)
@@ -42,6 +45,8 @@ class GoogleSheet(object):
     def sheet_to_dict(sheet_name, tech_title):
         """
         Convert the spreadsheet to a dict with {layername: {colName: colVal, colName2: colVal}
+        :param sheet_name: name of the google sheet
+        :param tech title: the unique ID for features in spreadsheet
         :return: a dictionary representing the sheet
         """
 
