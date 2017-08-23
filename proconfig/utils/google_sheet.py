@@ -23,17 +23,7 @@ class GoogleSheet(object):
 
         # Updated for oauth2client
         # http://gspread.readthedocs.org/en/latest/oauth2.html
-
-        with open('spreadsheet.json') as thefile:
-            logging.info("here's the json file {}".format(thefile.read()))
-
-        if type('spreadsheet.json') is dict:
-            spreadsheet_creds = 'spreadsheet.json'
-        else:
-            spreadsheet_file = os.path.join('proconfig', 'tokens', 'spreadsheet.json')
-            spreadsheet_creds = spreadsheet_file
-
-        credentials = ServiceAccountCredentials.from_json_keyfile_name(spreadsheet_creds,
+        credentials = ServiceAccountCredentials.from_json_keyfile_name('spreadsheet.json',
                                                                        ['https://spreadsheets.google.com/feeds'])
 
         gc = gspread.authorize(credentials)

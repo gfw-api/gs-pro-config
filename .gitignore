@@ -87,8 +87,11 @@ celerybeat-schedule
 venv/
 
 #Compiled files:
-__pycache__/
 *.pyc
+
+#pycache
+__pycache__/
+
 ENV/
 
 # Spyder project settings

@@ -14,7 +14,7 @@ def validate_spreadsheet_request(func):
         tech_title = request.view_args.get('tech_title')
 
         if not tech_title:
-            return error(status=400, detail="Must specify a technical title")
+            return error(status=400, detail="Must specify a technical title in path")
 
         return func(*args, **kwargs)
     return wrapper
