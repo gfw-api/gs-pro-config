@@ -19,9 +19,10 @@ proconfig_endpoints = Blueprint('proconfig_endpoints', __name__)
 
 def get_spreadsheet(tech_title):
     """Spreadsheet Endpoint"""
-    #Next Step add a rebuild cache
+
     logging.info('[ROUTER]: print spreadsheet')
 
+    #get data from speadsheet using Googlesheet util 
     data = GoogleSheet.sheet_to_dict('Form Responses', tech_title)
 
     return jsonify({'data': data}), 200
