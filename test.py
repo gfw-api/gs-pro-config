@@ -1,5 +1,5 @@
 import unittest
-from psconfig.tests import BasicTest
+from proconfig.tests import BasicTest
 
 if __name__ == '__main__':
     unittest.main()

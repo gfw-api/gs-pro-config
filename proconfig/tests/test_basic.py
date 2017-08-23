@@ -1,6 +1,6 @@
 import unittest
 import json
-from psconfig import app
+from proconfig import app
 import requests
 from httmock import all_requests, response, HTTMock
 
