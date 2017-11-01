@@ -22,7 +22,11 @@ def get_spreadsheet(tech_title):
 
     logging.info('[ROUTER]: print spreadsheet')
 
-    #get data from speadsheet using Googlesheet util 
-    data = GoogleSheet.sheet_to_dict('Form Responses', tech_title)
+    #get data from speadsheet using Googlesheet util
+    try:
+        data = GoogleSheet.sheet_to_dict('Form Responses', tech_title)
+    except Exception as e:
+        logging.error('[ROUTER]: '+str(e))
+        return error(status=500, detail=e.message)
 
     return jsonify({'data': data}), 200

@@ -6,6 +6,8 @@ import json
 import base64
 from oauth2client.service_account import ServiceAccountCredentials
 
+from proconfig.errors import Error
+
 
 class GoogleSheet(object):
 
@@ -64,4 +66,11 @@ class GoogleSheet(object):
             for key, value in row_as_dict.items():
                 sheet_as_dict[layer_name][key] = value
 
-        return sheet_as_dict[tech_title]
+        data = sheet_as_dict.get(tech_title, None)
+
+        if not data:
+            valid_keys = ', '.join(list(sheet_as_dict.keys()))
+            msg = 'Key {} not found. Valid keys are: {}'.format(tech_title, valid_keys)
+            raise Error(message=msg)
+
+        return data
