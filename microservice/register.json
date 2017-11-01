@@ -1,7 +1,7 @@
 {
 	"name": "#(service.name)",
 	"endpoints": [{
-		"path": "/pro-config/:tech_title",
+		"path": "/v1/pro-config/:tech_title",
 		"method": "GET",
 		"binary": true,
 		"redirect": {
