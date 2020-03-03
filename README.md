@@ -1,5 +1,8 @@
 # GS PRO Config Microservice
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/4a6bd3e90a49a0a6000c/test_coverage)](https://codeclimate.com/github/gfw-api/gs-pro-config/test_coverage)
+[![Build Status](https://travis-ci.org/gfw-api/gs-pro-config.svg?branch=develop)](https://travis-ci.org/gfw-api/gs-pro-config)
+
 ## Getting started
 
 ### Requirements
