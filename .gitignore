@@ -102,3 +102,4 @@ ENV/
 
 #tokens
 tokens/
+/spreadsheet.json
