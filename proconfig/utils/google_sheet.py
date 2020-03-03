@@ -1,9 +1,4 @@
 import gspread
-import os
-import sys
-import logging
-import json
-import base64
 from oauth2client.service_account import ServiceAccountCredentials
 
 from proconfig.errors import Error
@@ -32,7 +27,6 @@ class GoogleSheet(object):
         wks = gc.open_by_key(spreadsheet_key).worksheet(sheet_name)
 
         return wks
-
 
     def sheet_to_dict(sheet_name, tech_title):
         """
