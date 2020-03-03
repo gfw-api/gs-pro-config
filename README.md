@@ -1,4 +1,4 @@
-# Python Skeleton for Micorservices
+# GS PRO Config Microservice
 
 ## Getting started
 

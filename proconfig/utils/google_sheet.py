@@ -65,6 +65,6 @@ class GoogleSheet(object):
         if not data:
             valid_keys = ', '.join(list(sheet_as_dict.keys()))
             msg = 'Key {} not found. Valid keys are: {}'.format(tech_title, valid_keys)
-            raise Error(message=msg)
+            raise Error(message=msg, code=404)
 
         return data

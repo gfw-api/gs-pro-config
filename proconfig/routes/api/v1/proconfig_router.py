@@ -21,6 +21,7 @@ def get_spreadsheet(tech_title):
         data = GoogleSheet.sheet_to_dict('Form Responses', tech_title)
     except Exception as e:
         logging.error('[ROUTER]: ' + str(e))
-        return error(status=500, detail=e.message)
+        status_code = e.code if e.code is not None else 500
+        return error(status=status_code, detail=e.message)
 
     return jsonify({'data': data}), 200

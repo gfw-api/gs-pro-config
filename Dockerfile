@@ -1,5 +1,5 @@
 FROM python:3.6-alpine
-MAINTAINER Sergio Gordillo sergio.gordillo@vizzuality.com
+MAINTAINER info@vizzuality.com
 
 ENV NAME proconfig
 ENV USER proconfig
