@@ -1,9 +1,4 @@
-
-import datetime
-
-from flask import jsonify, request
-
-# GENERIC Error
+from flask import jsonify
 
 
 def error(status=500, detail='Generic Error'):

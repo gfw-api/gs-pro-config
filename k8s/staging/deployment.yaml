@@ -3,25 +3,35 @@ kind: Deployment
 metadata:
   namespace: gfw
   labels:
-    name: {name}
-  name: {name}
+    name: gs-pro-config
+  name: gs-pro-config
 spec:
   revisionHistoryLimit: 0
   template:
     metadata:
-      annotations:
-        chaos.alpha.kubernetes.io/enabled: "true"
       labels:
-        name: {name}
+        name: gs-pro-config
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: type
+                    operator: In
+                    values:
+                      - apps
       containers:
-      - name: {name}
-        image: vizzuality/{name}
+      - name: gs-pro-config
+        image: vizzuality/gs-pro-config
         imagePullPolicy: Always
         resources:
           requests:
-            memory: "0Mi"
-            cpu: "0m"
+            cpu: "0.5"
+            memory: "256M"
+          limits:
+            cpu: "1"
+            memory: "512M"
         args:
           - start
         env:
@@ -30,7 +40,7 @@ spec:
           - name: ENVIRONMENT
             value: staging
           - name: LOCAL_URL
-            value: http://{name}.gfw.svc.cluster.local:6700
+            value: http://gs-pro-config.gfw.svc.cluster.local:6700
           - name: CT_URL
             valueFrom:
                 secretKeyRef:

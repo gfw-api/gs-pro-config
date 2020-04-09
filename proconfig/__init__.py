@@ -1,15 +1,15 @@
 """The API MODULE"""
 
-import os
-import json
 import logging
+import os
 
+import CTRegisterMicroserviceFlask
 from flask import Flask
+
 from proconfig.config import SETTINGS
 from proconfig.routes.api import error
 from proconfig.routes.api.v1 import proconfig_endpoints
 from proconfig.utils.files import load_config_json
-import CTRegisterMicroserviceFlask
 
 logging.basicConfig(
     level=SETTINGS.get('logging', {}).get('level'),
@@ -31,7 +31,8 @@ CTRegisterMicroserviceFlask.register(
     name='proconfig',
     info=info,
     swagger=swagger,
-    mode=CTRegisterMicroserviceFlask.AUTOREGISTER_MODE if os.getenv('CT_REGISTER_MODE') and os.getenv('CT_REGISTER_MODE') == 'auto' else CTRegisterMicroserviceFlask.NORMAL_MODE,
+    mode=CTRegisterMicroserviceFlask.AUTOREGISTER_MODE if os.getenv('CT_REGISTER_MODE') and os.getenv(
+        'CT_REGISTER_MODE') == 'auto' else CTRegisterMicroserviceFlask.NORMAL_MODE,
     ct_url=os.getenv('CT_URL'),
     url=os.getenv('LOCAL_URL')
 )

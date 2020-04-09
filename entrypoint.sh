@@ -8,8 +8,9 @@ case "$1" in
         exec python main.py
         ;;
     test)
-        echo "Test"
-        exec python test.py
+        echo "Running tests"
+        echo -e "$GS_PRO_SERVICE_ACCOUNT" | base64 -d > spreadsheet.json
+        exec pytest
         ;;
     start)
         echo "Running Start"

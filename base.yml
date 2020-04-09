@@ -1,7 +1,0 @@
-base:
-  build: .
-  ports:
-    - "6700:6700"
-  environment:
-    PORT: 6700
-  container_name: gs-pro-config

@@ -1,4 +1,7 @@
-# Python Skeleton for Micorservices
+# GS PRO Config Microservice
+
+[![Build Status](https://travis-ci.org/gfw-api/gs-pro-config.svg?branch=develop)](https://travis-ci.org/gfw-api/gs-pro-config)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/4a6bd3e90a49a0a6000c/test_coverage)](https://codeclimate.com/github/gfw-api/gs-pro-config/test_coverage)
 
 ## Getting started
 
@@ -31,3 +34,17 @@ The API has been packed in a Python module (ps). It creates and exposes a WSGI a
 has been divided in three different layers or submodules (Routes, Services and Models).
 
 There are also some generic submodules that manage the request validations, HTTP errors and the background tasks manager.
+
+
+### Tests
+
+As this microservice relies on the Google Sheets API, tests require a valid `spreadsheet.json` or equivalent file. 
+At the time of this writing, actual tests use real calls to the API, so the real credential are needed to run the tests. 
+This microservice and its tests do read-only calls to this API. 
+
+Before you run the tests, be sure to install the necessary development libraries, using `pip install -r requirements_dev.txt`.
+
+Actual test execution is done by running the `pytest` executable on the root of the project.  
+
+If you are using the `./proconfig.sh test` command or the underlying `docker-compose-test.yml` to run the tests, you will need to have a
+base64 encoded version of the content of `spreadsheet.json` present on the `GS_PRO_SERVICE_ACCOUNT` environment variable for the tests to run.

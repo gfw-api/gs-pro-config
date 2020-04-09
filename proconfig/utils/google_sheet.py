@@ -1,9 +1,4 @@
 import gspread
-import os
-import sys
-import logging
-import json
-import base64
 from oauth2client.service_account import ServiceAccountCredentials
 
 from proconfig.errors import Error
@@ -32,7 +27,6 @@ class GoogleSheet(object):
         wks = gc.open_by_key(spreadsheet_key).worksheet(sheet_name)
 
         return wks
-
 
     def sheet_to_dict(sheet_name, tech_title):
         """
@@ -71,6 +65,6 @@ class GoogleSheet(object):
         if not data:
             valid_keys = ', '.join(list(sheet_as_dict.keys()))
             msg = 'Key {} not found. Valid keys are: {}'.format(tech_title, valid_keys)
-            raise Error(message=msg)
+            raise Error(message=msg, code=404)
 
         return data
