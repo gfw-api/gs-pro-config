@@ -66,7 +66,7 @@ spec:
                 secretKeyRef:
                   key: GS_PRO_SERVICE_ACCOUNT
                   name: mssecrets
-          image: vizzuality/gs-pro-config
+          image: gfwdockerhub/gs-pro-config
           imagePullPolicy: Always
           name: gs-pro-config
           ports:
