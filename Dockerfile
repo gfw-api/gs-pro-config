@@ -1,14 +1,14 @@
-FROM python:3.6-alpine
+FROM python:3.6-stretch
 MAINTAINER info@vizzuality.com
 
 ENV NAME proconfig
 ENV USER proconfig
 
-RUN apk update && apk upgrade && \
-   apk add --no-cache --update bash git openssl-dev build-base alpine-sdk \
-   libffi-dev postgresql-dev gcc python3-dev musl-dev
+RUN apt-get update -qqy && apt-get install -qqy bash git libssl-dev build-essential \
+   libffi-dev gcc python3-dev musl-dev
 
-RUN addgroup $USER && adduser -s /bin/bash -D -G $USER $USER
+RUN addgroup $USER
+RUN useradd -ms /bin/bash -g $USER $USER
 
 RUN pip install --upgrade pip
 RUN pip install gunicorn gevent setuptools
