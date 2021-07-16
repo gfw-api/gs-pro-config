@@ -63,6 +63,12 @@ def test_valid_keys(client):
         response = client.get(
             '/api/v1/pro-config/{}'.format(key))
 
+        # As these tests rely heavily on spamming the Google Sheets API, they may go over the quota limit.
+        # So if that happens, we skip, instead of failing
+        if response.status_code == 500:
+            reply_json = json.loads(response.data)
+            if reply_json['errors'][0]['detail'] == 'Google sheets query quota exhausted':
+                pytest.skip("Google sheets query quota exhausted")
         assert response.status_code == 200
         reply_json = json.loads(response.data)
         for reply_attribute in reply_attributes:
