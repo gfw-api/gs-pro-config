@@ -6,12 +6,12 @@ ENV USER proconfig
 
 RUN apk update && apk upgrade && \
    apk add --no-cache --update bash git openssl-dev build-base alpine-sdk \
-   libffi-dev postgresql-dev gcc python3-dev musl-dev g++
+   libffi-dev postgresql-dev gcc python3-dev musl-dev
 
 RUN addgroup $USER && adduser -s /bin/bash -D -G $USER $USER
 
 RUN pip install --upgrade pip
-RUN pip install gunicorn gevent
+RUN pip install gunicorn gevent setuptools
 
 RUN mkdir -p /opt/$NAME
 
