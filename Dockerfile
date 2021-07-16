@@ -6,7 +6,7 @@ ENV USER proconfig
 
 RUN apk update && apk upgrade && \
    apk add --no-cache --update bash git openssl-dev build-base alpine-sdk \
-   libffi-dev postgresql-dev gcc python3-dev musl-dev make
+   libffi-dev postgresql-dev gcc python3-dev musl-dev g++
 
 RUN addgroup $USER && adduser -s /bin/bash -D -G $USER $USER
 
