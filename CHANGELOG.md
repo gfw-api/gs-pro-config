@@ -1,3 +1,9 @@
+## 16/07/2021
+
+- Update `RWAPIMicroservicePython` to remove CT support.
+- Remove or replace CT related env vars.
+- Simplify internal routing to match public URLs
+
 ## 31/05/2021
 
 - Update `RWAPIMicroservicePython` to add CORS support.

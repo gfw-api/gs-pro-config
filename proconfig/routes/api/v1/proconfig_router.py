@@ -9,7 +9,7 @@ from proconfig.validators import validate_spreadsheet_request
 proconfig_endpoints = Blueprint('proconfig_endpoints', __name__)
 
 
-@proconfig_endpoints.route('/pro-config/<tech_title>', strict_slashes=False, methods=['GET'])
+@proconfig_endpoints.route('/<tech_title>', strict_slashes=False, methods=['GET'])
 @validate_spreadsheet_request
 def get_spreadsheet(tech_title):
     """Spreadsheet Endpoint"""

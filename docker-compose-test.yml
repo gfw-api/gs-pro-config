@@ -8,8 +8,7 @@ services:
     environment:
       PORT: 6700
       GS_PRO_SERVICE_ACCOUNT: $GS_PRO_SERVICE_ACCOUNT
-      CT_URL: http://mymachine:9000
+      GATEWAY_URL: http://mymachine:9000
       CT_REGISTER_MODE: 'false'
-      CT_TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Im1pY3Jvc2VydmljZSIsImNyZWF0ZWRBdCI6IjIwMTYtMDktMTQifQ.IRCIRm1nfIQTfda_Wb6Pg-341zhV8soAgzw7dd5HxxQ
-      API_VERSION: v1
+      MICROSERVICE_TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Im1pY3Jvc2VydmljZSIsImNyZWF0ZWRBdCI6IjIwMTYtMDktMTQifQ.IRCIRm1nfIQTfda_Wb6Pg-341zhV8soAgzw7dd5HxxQ
     command: test
