@@ -1,4 +1,4 @@
-FROM python:3.6-stretch
+FROM python:3.11-bullseye
 MAINTAINER info@vizzuality.com
 
 ENV NAME proconfig
