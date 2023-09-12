@@ -8,6 +8,6 @@ SETTINGS = {
     },
     'service': {
         'port': os.getenv('PORT'),
-        'name': 'GFW PRO Text Configuration'
+        'name': 'GS PRO Text Configuration'
     }
 }
